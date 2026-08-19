@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARMESHWARI GANESH MANDAL, OMERGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #3D2334;
+            color: #ffffff;
+            font-family: 'Poppins', 'Tiro Devanagari Marathi', sans-serif;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #3D2301 0%, #0d1117 100%);
+            min-height: 130vh;
+            padding: 20px 15px 40px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .top-subtext {
+            color: #ffaa00;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 1px;
+        }
+
+        .hero-card {
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 25px 15px;
+            margin: 20px 0;
+            background: rgba(13, 17, 23, 0.6);
+            box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .hero-title {
+            font-size: 25px;
+            color: #ffd700;
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        .ganesha-img {
+            width: 100%;
+            max-width: 250px;
+            height: 325px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 15px 0;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .mandal-name {
+            font-size: 22px;
+            color: #ffffff;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .sub-mandal {
+            color: #d4af37;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            color: #ffd700;
+            font-size: 25px;
+            margin: 30px 0 15px;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+        }
+
+        .event-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #ffd700;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .event-box h4 {
+            color: #ffaa00;
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+
+        .event-box p {
+            color: #cccccc;
+            font-size: 15px;
+        }
+
+        .btn-map {
+            display: inline-block;
+            background: linear-gradient(2deg, #d4af37, #ffaf20);
+            color: #000000;
+            padding: 12px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 10px;
+            box-shadow: 0 15px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #d4af37;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 15px;
+            color: #888888;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 20px;
+        }
+
+        .footer span {
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p class="top-subtext" id="topHeader"></p>
+        
+        <div class="hero-card">
+            <p style="color: #d4af37;" id="welcomeText"></p>
+            <h1 class="hero-title" id="mainTitle"></h1>
+            
+            <!-- Main Hero Image -->
+            <img class="ganesha-img" id="heroImage" src="IMG-20260810-WA0002.jpg" alt="Bappa">
+            
+            <h2 class="mandal-name" id="mandalName"></h2>
+            <p class="sub-mandal" id="subMandalName"></p>
+            <p style="font-size: 14px; color: #dddddd; margin-top: 10px;" id="invitationMsg"></p>
+        </div>
+
+        <!-- Dynamic Events List -->
+        <h3 class="section-title" id="eventsTitle">उत्सवाची माहिती</h3>
+        <div id="eventsContainer"></div>
+
+        <!-- Location -->
+        <h3 class="section-title">ठिकाण</h3>
+        <p style="color: #cccccc;" id="locationAddress"></p>
+        <a href="#" id="mapLink" target="_blank" class="btn-map">📍 Google Maps वर पहा</a>
+
+        <!-- Dynamic Gallery Grid -->
+        <h3 class="section-title">
+             
+            
+        </h3>
+        <div class="gallery-grid" id="galleryContainer"></div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>निमंत्रक: <span id="organizerName"></span></p>
+            <p style="margin-top: 5px;" id="sloganText"></p>
+        </div>
+    </div>
+
+    <!-- CONFIGURATION SCRIPT: CHANGE EVERYTHING HERE -->
+    <script>
+        // ==========================================================
+        // 1. CHANGE TEXT DETAILS HERE
+        // ==========================================================
+        const pageData = {
+            topHeader: "|| श्री गणेशाय नमः ||",
+            welcomeText: "!! गणपती बाप्पा !!",
+            mainTitle: "| मोरया |",
+            mandalName: "परमेश्वरी गणेश मंडळ, उमरगा",
+            subMandalName: "PGM BOYS",
+            invitationMsg: "तुम्हाला व तुमच्या परिवाराला गणेशोत्सवाचे सस्नेह आमंत्रण!",
+            locationAddress: "देवी मंदिर कुंभारवाडा, उमरगा",
+            mapUrl: "https://maps.app.goo.gl/oXSvcMdquAid8quq7",
+            organizerName: "PGM BOYS, OMERGA",
+            sloganText: "! गणपती बाप्पा मोरया !"
+        };
+
+        // ==========================================================
+        // 2. CHANGE MAIN IMAGE (Put image file name or link here)
+        // ==========================================================
+        const mainHeroImage = "IMG_20260810_115129.jpg";
+
+        // ==========================================================
+        // 3. ADD, DELETE, OR CHANGE EVENTS HERE
+        // ==========================================================
+        const eventsList = [
+            {
+                title: "दैनिक आरती",
+                details: "दररोज सकाळी १०:०० वाजता आणि रात्री ८:०० वाजता"
+            },
+            {
+                title: " मनोरंजन ",
+                details: " सायंकाळी ६:०० वाजेपासून, <br> १)दि. १७/९/२६ :- संगीत खुर्ची  <br> २) दि. १८/९/२६ :- रांगोळी स्पर्धा <br>३) दि. १९/९/२६ :- चिमुकल्यांचे खेळ            "
+            },
+            {
+                title: "सत्यनारायन  पुजन    व  महाप्रसाद",
+                details: "दि. २४ ऑगस्ट २०२६, वेळ सायंकाळी ७:०० वाजेपासून"
+            }
+            // To add a new event, simply copy and add another line like this:
+            // ,{ title: "नवीन कार्यक्रम", details: "वेळ आणि तारीख माहिती..." }
+        ];
+
+        // ==========================================================
+        // 4. ADD, DELETE, OR CHANGE GALLERY IMAGES HERE
+        // ==========================================================
+        const galleryImages = [
+            "IMG-20250904-WA0052.jpg",
+            "IMG-20250902-WA0012.jpg",
+            "IMG_20260816_100004.jpg",
+            "IMG-20250828-WA0019.jpg"
+            // To add or remove images, add or delete image links in quotes.
+        ];
+
+        // ==========================================================
+        // SCRIPT RENDER LOGIC (NO NEED TO EDIT BELOW THIS LINE)
+        // ==========================================================
+        document.getElementById('topHeader').innerText = pageData.topHeader;
+        document.getElementById('welcomeText').innerText = pageData.welcomeText;
+        document.getElementById('mainTitle').innerText = pageData.mainTitle;
+        document.getElementById('mandalName').innerText = pageData.mandalName;
+        document.getElementById('subMandalName').innerText = pageData.subMandalName;
+        document.getElementById('invitationMsg').innerText = pageData.invitationMsg;
+        document.getElementById('locationAddress').innerText = pageData.locationAddress;
+        document.getElementById('mapLink').href = pageData.mapUrl;
+        document.getElementById('organizerName').innerText = pageData.organizerName;
+        document.getElementById('sloganText').innerText = pageData.sloganText;
+        document.getElementById('heroImage').src = mainHeroImage;
+
+        // Render Events
+        const eventsContainer = document.getElementById('eventsContainer');
+        eventsContainer.innerHTML = eventsList.map(event => `
+            <div class="event-box">
+                <h4>${event.title}</h4>
+                <p>${event.details}</p>
+            </div>
+        `).join('');
+
+        // Render Gallery
+        const galleryContainer = document.getElementById('galleryContainer');
+        galleryContainer.innerHTML = galleryImages.map(imgSrc => `
+            <img src="${imgSrc}" alt="Festival Image">
+        `).join('');
+    </script>
+</body>
+</html>
